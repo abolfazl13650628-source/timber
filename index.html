@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#2f6b3c">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>برآورد و استحصال چوب‌آلات هیرکانی</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap">
+<style>
+:root{--bg:#f4f7f2;--sf:#fff;--tx:#18241b;--mu:#5c6b5f;--ac:#2f6b3c;--ac2:#fff;--bd:#d5dfd3;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101a13;--sf:#18251c;--tx:#e8f0e9;--mu:#9fb2a3;--ac:#5fb374;--ac2:#08140b;--bd:#2b3d30;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#101a13;--sf:#18251c;--tx:#e8f0e9;--mu:#9fb2a3;--ac:#5fb374;--ac2:#08140b;--bd:#2b3d30;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.7 Vazirmatn,Tahoma,sans-serif}
+#splash{position:fixed;inset:0;z-index:9;background:#1d3b2a;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;overflow:hidden}
+#splash svg{position:absolute;inset:0;width:100%;height:100%}
+.sp{position:relative;text-align:center;color:#fff;padding:24px 24px calc(48px + env(safe-area-inset-bottom,0px));text-shadow:0 2px 8px #0008}
+.sp h1{margin:0;font-size:34px}.sp p{margin:6px 0 20px}
+button{font:inherit;background:var(--ac);color:var(--ac2);border:0;border-radius:10px;padding:10px 16px;cursor:pointer}
+button.o{background:none;color:var(--ac);border:1px solid var(--ac)}button.x{background:#b3402f;color:#fff;padding:2px 8px}
+#app{max-width:640px;margin:auto;padding:12px 12px 80px}
+nav{display:flex;gap:6px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);padding:8px 0;z-index:2}
+nav button{flex:1;background:var(--sf);color:var(--tx);border:1px solid var(--bd)}nav button.on{background:var(--ac);color:var(--ac2)}
+.c{background:var(--sf);border:1px solid var(--bd);border-radius:14px;padding:12px;margin:10px 0}
+label{display:block;font-size:13px;color:var(--mu);margin-top:8px}
+input,select{width:100%;font:inherit;padding:9px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--tx)}
+.r{display:flex;gap:8px}.r>*{flex:1}
+#vw{position:relative;background:#000;border-radius:10px;overflow:hidden;aspect-ratio:3/4;margin-top:8px}
+#vw video{width:100%;height:100%;object-fit:cover}
+.ln{position:absolute;top:0;bottom:0;width:2px;background:#ffd400}.ch{position:absolute;left:50%;top:50%;width:26px;height:26px;margin:-13px;border:2px solid #ff4d4d;border-radius:50%}
+.big{font-size:22px;font-weight:700;color:var(--ac)}
+.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:13px;white-space:nowrap}th,td{border-bottom:1px solid var(--bd);padding:6px;text-align:center}
+.m{color:var(--mu);font-size:12px}.hid{display:none!important}
+.gbox{border:3px solid var(--bd);border-radius:14px;padding:10px;margin-top:8px;text-align:center}
+.gbox .gx{display:flex;justify-content:space-around;gap:6px;flex-wrap:wrap}.gbox b{display:block;font-size:24px;line-height:1.3}.gbox small{color:var(--mu)}
+.gbox.g1{border-color:#2e9d4f}.gbox.g2{border-color:#d19a00}.gbox.g3{border-color:#d33}
+.gbox .ac{margin-top:6px;font-weight:700}.g1 .ac{color:#2e9d4f}.g2 .ac{color:#b78500}.g3 .ac{color:#d33}
+.vl,.hl{position:absolute;pointer-events:none}.vl{top:0;bottom:0;width:2px;margin-left:-1px}.hl{left:0;right:0;height:2px;margin-top:-1px}
+.vl i,.hl i{position:absolute;font:11px Vazirmatn,Tahoma;background:#000b;color:#fff;padding:0 4px;border-radius:4px;white-space:nowrap;font-style:normal}.vl i{top:4px;right:4px}.hl i{right:4px;top:4px}
+.rl{position:absolute;left:0;right:0;bottom:0;height:18px;background-color:#0007;pointer-events:none}.rl i{position:absolute;right:4px;bottom:1px;font:10px Vazirmatn,Tahoma;color:#fff;font-style:normal}
+#chips button{flex:1 1 45%;padding:6px 4px;font-size:13px}
+@keyframes bl{50%{opacity:.35}}.gbox.al{animation:bl 1s infinite}#mc2{width:100%;border:1px solid var(--bd);border-radius:10px;margin-top:8px;background:var(--bg)}
+#gen{margin-top:6px;padding:8px;border:1px dashed var(--bd);border-radius:8px;font-size:13px;color:var(--tx)}
+#bn{background:#fff3cd;color:#5c4400;border-radius:10px;padding:8px 10px;margin:8px 0}#pw{position:relative;margin-top:8px}#pw img{width:100%;display:block;border-radius:10px}.pt{position:absolute;width:20px;height:20px;margin:-10px;border-radius:50%;border:2px solid #fff;background:#e22;color:#fff;font-size:11px;text-align:center;line-height:16px;pointer-events:none}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+<div id="splash">
+<svg viewBox="0 0 400 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<defs><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9fc7b0"/><stop offset=".55" stop-color="#e3eedd"/></linearGradient></defs>
+<rect width="400" height="800" fill="url(#sk)"/>
+<path d="M0 420Q90 330 180 400T400 360V800H0Z" fill="#7aa58b" opacity=".7"/>
+<path d="M0 480Q120 400 230 470T400 440V800H0Z" fill="#4f8062"/>
+<g fill="#2c5a3d"><path d="M40 560l30-170 30 170z"/><path d="M110 600l36-210 36 210z"/><path d="M200 570l30-180 30 180z"/><path d="M290 610l36-220 36 220z"/><path d="M350 560l26-150 26 150z"/></g>
+<g fill="#1b3d2a"><path d="M-10 800l50-380 50 380z"/><path d="M80 800l44-300 44 300z"/><path d="M250 800l50-340 50 340z"/><path d="M340 800l50-400 50 400z"/></g>
+<g fill="#5b3d26"><rect x="36" y="620" width="8" height="180"/><rect x="120" y="640" width="8" height="160"/><rect x="296" y="630" width="9" height="170"/></g>
+</svg>
+<div class="sp"><h1>هادی آقاجانی</h1><p>برآورد و استحصال چوب‌آلات<br>جنگل‌های هیرکانی</p><button id="go">ورود</button></div>
+</div>
+
+<div id="app">
+<nav><button data-t="m" class="on">اندازه‌گیری</button><button data-t="l">فهرست</button><button data-t="h">تجدید و استحصال</button></nav>
+<div id="bn" class="hid"></div>
+
+<section id="sec-m">
+<div class="r" style="margin-top:6px"><button id="mc">با دوربین</button><button id="mm" class="o">ورود دستی</button></div>
+<div class="c">
+<div class="r"><button id="ga" class="o">فعال‌سازی مختصات</button><button id="gr" class="o">ثبت مختصات</button></div>
+<div id="gb" class="gbox hid"><div class="gx"><div><small>X</small><b id="gX"></b></div><div><small>Y</small><b id="gY"></b></div><div><small>زون</small><b id="gZ"></b></div></div><div class="ac" id="gA"></div></div>
+<div class="m" id="gs" style="margin-top:6px">مختصات غیرفعال است.</div>
+</div>
+<div class="c" id="mp">
+<b>نقشهٔ محدوده</b> <span class="m">(KMZ، KML یا DXF)</span>
+<div class="r" style="margin-top:6px"><button id="mb" class="o">انتخاب فایل نقشه</button><button id="mx" class="o hid">حذف نقشه</button></div>
+<input type="file" id="mf" accept=".kmz,.kml,.dxf,.dwg" class="hid">
+<button id="gk" style="width:100%;margin-top:6px">ساخت فایل نقشه و درخت‌ها برای گوگل ارث</button>
+<div class="m" id="gen">با دکمهٔ بالا فایلی از مرز نقشه و درخت‌ها ساخته می‌شود. بعد از ذخیره، پسوند آن را از zip به kmz عوض کنید و با گوگل ارث باز کنید.</div>
+<div class="m" id="mi" style="margin-top:6px">نقشه‌ای بارگذاری نشده است.</div>
+<canvas id="mc2" width="640" height="400" class="hid"></canvas>
+<div id="ms" class="gbox hid"><b id="mst"></b><div class="ac" id="msd"></div></div>
+<label style="display:flex;align-items:center;gap:6px"><input type="checkbox" id="mal" checked style="width:auto"> هشدار صوتی و لرزشی هنگام خروج از محدوده</label>
+</div>
+<div class="c" id="cm">
+<div class="r"><button id="s1">۱) قطر درخت</button><button id="s2" class="o">۲) ارتفاع درخت</button></div>
+<p class="m" id="gd1" style="margin:8px 0"></p>
+<div id="dw1"><label>فاصلهٔ واقعی دوربین تا تنه (متر)</label><input id="D1" type="number" inputmode="decimal" value="1"></div>
+<div id="dw2" class="hid"><label>فاصلهٔ واقعی دوربین تا پای درخت (متر)</label><input id="D2" type="number" inputmode="decimal" value="5"></div>
+<button id="ph" style="width:100%">عکس‌برداری</button>
+<input type="file" id="fi" accept="image/*" capture="environment" class="hid">
+<div id="pw" class="hid"><img id="im" alt=""><div id="ov" style="position:absolute;inset:0"></div></div>
+<div id="chips" class="r" style="flex-wrap:wrap;margin-top:6px"></div>
+<div id="rd" class="big" style="margin-top:8px"></div>
+<div class="m" id="st"></div>
+<label>فاصلهٔ کانونی دوربین (میلی‌متر، معادل ۳۵ میلی‌متر)</label><input id="fl" type="number" inputmode="decimal" value="26"><div class="m" id="fls"></div>
+</div>
+
+<div class="c">
+<div class="r"><div><label>قطر برابر سینه (سانتی‌متر)</label><input id="d" type="number" inputmode="decimal"></div><div><label>ارتفاع (متر)</label><input id="h" type="number" inputmode="decimal"></div></div>
+<label>گونه</label><input id="sps" placeholder="جستجو: حرف اول گونه را بزنید" autocomplete="off"><select id="sp" style="margin-top:4px"></select>
+<div class="r"><div><label>دسته (تشخیص خودکار)</label><select id="gd"><option value="1">دسته اول</option><option value="2">دسته دوم</option><option value="3">دسته سوم</option></select></div></div>
+<div class="r"><div><label>نوع درخت (خودکار)</label><select id="ty"><option value="i">صنعتی</option><option value="h">هیزمی</option></select></div><div><label>شماره / پلاک درخت</label><input id="no"></div></div>
+<div id="cw" class="hid"><label>تعداد درختان هیزمی (هم‌گونه و هم‌اندازه)</label><input id="nn" type="number" inputmode="decimal" value="1"></div>
+<label>توضیحات</label><input id="ds" placeholder="مثلاً وضعیت تنه، شیب، پارسل…">
+<p>حجم برآوردی: <span class="big" id="v">—</span> متر مکعب</p>
+<div class="r"><button id="sv">ذخیرهٔ درخت</button><button id="ce" class="o hid">لغو ویرایش</button></div><div class="m" id="msg"></div>
+<p class="m">برآورد تقریبی است و جایگزین کالیپر و شیب‌سنج نیست. ضریب شکل راش و بلوط نمونه است؛ با جدول رسمی خودتان تطبیق دهید.</p>
+</div>
+</section>
+
+<section id="sec-l" class="hid"><div class="c"><div class="tw"><table id="tb"></table></div><p>جمع حجم: <b id="tot">۰</b> متر مکعب</p>
+<b>خلاصه وضعیت درختان نشانه‌گذاری‌شده</b><div class="tw"><table id="sm"></table></div><br><button id="e1">خروجی اکسل</button><div class="m xs"></div>
+<hr><b>پشتیبان‌گیری و بازیابی</b><div class="m" id="bks"></div>
+<div class="r" style="margin-top:6px"><button id="bk" class="o">پشتیبان‌گیری</button><button id="rb" class="o">بازیابی</button></div>
+<label>روش بازیابی</label><select id="rm"><option value="a">افزودن به داده‌های فعلی</option><option value="r">جایگزینی کامل</option></select>
+<input type="file" id="rf" accept=".json,application/json" class="hid"></div></section>
+
+<section id="sec-h" class="hid"><div class="c">
+<label>درخت</label><select id="hs2"></select>
+<div class="r"><div><label>قطر جدید (سانتی‌متر)</label><input id="d2" type="number" inputmode="decimal"></div><div><label>ارتفاع جدید (متر)</label><input id="h2" type="number" inputmode="decimal"></div></div>
+<div class="r"><div><label>حجم استحصال‌شده (مترمکعب)</label><input id="hv" type="number" inputmode="decimal"></div><div><label>تاریخ استحصال</label><input id="hd" type="date"></div></div>
+<label>یادداشت</label><input id="hn"><br><button id="sh" style="width:100%">ذخیره</button></div>
+<div class="c"><div class="tw"><table id="tb2"></table></div><br><button id="e2">خروجی اکسل</button><div class="m xs"></div></div></section>
+</div>
+
+<script>
+const $=s=>document.querySelector(s),fa=(n,m=2)=>(n!==null&&n!==undefined&&n!==''&&isFinite(n))?Number(n).toLocaleString('fa-IR',{maximumFractionDigits:m}):'—';
+const toFa=s=>String(s).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]).replace(/\./g,'٫'),toEn=s=>String(s).replace(/[۰-۹]/g,d=>'۰۱۲۳۴۵۶۷۸۹'.indexOf(d)).replace(/[٫،,]/g,'.');
+const N=id=>+toEn($(id).value),rad=x=>x*Math.PI/180,vol=(d,h,f)=>Math.PI/4*(d/100)**2*h*f;
+const SP={'سرخدار':[.5,1],'زربین':[.5,1],'ارس':[.5,1],'شمشاد':[.5,1],'گردو':[.5,1],'آزاد':[.5,1],'راش':[.52,2],'افرا':[.5,2],'توسکا':[.48,2],'ون':[.5,2],'شیردار':[.5,2],'بلوط':[.5,2],'نمدار':[.5,2],'ملچ':[.5,2],'بارانک':[.5,2],'الوکک':[.5,2],'ممرز':[.5,3],'لرگ':[.5,3],'انجیلی':[.5,3],'شب‌خسب':[.5,3],'سپیدار':[.45,3],'کلهو':[.5,3],'اوجا':[.5,3],'ولیک':[.5,3],'ازگیل وحشی':[.5,3],'کرات':[.5,3]};
+const G={1:'دسته اول',2:'دسته دوم',3:'دسته سوم'};
+const VT={"10": [0.01, 0.03, 0.05, 0.07], "15": [0.05, 0.09, 0.14, 0.18], "20": [0.09, 0.17, 0.23, 0.29], "25": [0.14, 0.24, 0.33, 0.42], "30": [0.39, 0.57, 0.71, 0.86], "35": [0.55, 0.75, 0.94, 1.06], "40": [0.63, 0.95, 1.22, 1.43], "45": [0.73, 1.23, 1.53, 1.8], "50": [0.92, 1.45, 1.88, 2.21, 2.5], "55": [1.11, 1.75, 2.27, 2.69, 3.06], "60": [1.21, 2.07, 2.71, 3.21, 3.68], "65": [1.52, 2.42, 3.18, 3.79, 4.27], "70": [1.76, 2.81, 3.69, 4.4, 5.09, 5.7], "75": [2.01, 3.22, 4.25, 5.11, 5.89, 6.63], "80": [2.21, 3.68, 4.86, 5.83, 6.74, 7.67], "85": [2.61, 4.19, 5.55, 6.6, 7.64, 8.73], "90": [2.92, 4.67, 6.2, 7.45, 8.63, 9.83], "95": [3.21, 5.21, 6.95, 8.35, 9.71, 11.09], "100": [3.6, 5.7, 7.69, 9.28, 10.7, 11.26]};
+function tbl(d,h){const hi=h/5-1,d0=Math.floor(d/5)*5,i0=Math.floor(hi),c=(a,i)=>(VT[a]&&VT[a][i]!=null)?VT[a][i]:null;
+ const a=c(d0,i0),b=c(d0+5,i0),e=c(d0,i0+1),g=c(d0+5,i0+1);
+ if(i0>=0&&[a,b,e,g].every(x=>x!==null)){const u=(d-d0)/5,w=hi-i0;return a*(1-u)*(1-w)+b*u*(1-w)+e*(1-u)*w+g*u*w}
+ let ff=.5,bd=1e9;for(const k in VT)VT[k].forEach((v,i)=>{const q=((+k-d)/5)**2+(i-hi)**2;if(q<bd){bd=q;ff=v/(Math.PI/4*(k/100)**2*(i+1)*5)}});
+ return vol(d,h,ff)}
+const volSp=(sp,d,h)=>(sp=='راش'||sp=='بلوط')?vol(d,h,SP[sp][0]):tbl(d,h);
+let T=[];try{T=JSON.parse(localStorage.getItem('trees')||'[]')}catch(e){}
+const norm=()=>T.forEach(t=>{if(t.sp=='زبان‌گنجشک')t.sp='ون';if(!t.g)t.g=(SP[t.sp]||[0,3])[1];if(!t.ty)t.ty=t.d<20?'h':'i';if(SP[t.sp]){t.v=volSp(t.sp,t.d,t.h);if(t.d2)t.v2=volSp(t.sp,t.d2,t.h2)}if(t.lat&&!t.ux){const u=utm(t.lat,t.lng);t.ux=u.E;t.uy=u.N;t.uz=u.z}});
+norm();
+const store=()=>{try{localStorage.setItem('trees',JSON.stringify(T))}catch(e){}bnr()};
+let BK={n:0,dt:''};try{BK=JSON.parse(localStorage.getItem('bk')||'{"n":0,"dt":""}')}catch(e){}
+function bnr(){const k=T.length-BK.n,b=$('#bn'),x=$('#bks');if(b){b.classList.toggle('hid',!(k>=10));b.textContent='⚠ '+toFa(k)+' درخت از آخرین پشتیبان‌گیری ثبت شده؛ از تب «فهرست» پشتیبان بگیرید.'}if(x)x.textContent=BK.dt?'آخرین پشتیبان: '+BK.dt+' ('+toFa(BK.n)+' درخت)':'هنوز پشتیبان‌گیری نشده است.'}
+try{if(localStorage.getItem('gv')!='2'){T.forEach(t=>{if(SP[t.sp])t.g=SP[t.sp][1]});store();localStorage.setItem('gv','2')}}catch(e){}
+document.querySelectorAll('input[type=number]').forEach(i=>{i.type='text';i.inputMode='decimal';i.value=toFa(i.value);i.addEventListener('input',()=>{i.value=toFa(toEn(i.value))})});
+$('#go').onclick=()=>$('#splash').classList.add('hid');
+document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('on',x===b));['m','l','h'].forEach(s=>$('#sec-'+s).classList.toggle('hid',s!==b.dataset.t));draw()});
+const nz=x=>String(x).replace(/ي/g,'ی').replace(/ك/g,'ک').replace(/آ/g,'ا').replace(/[\u200c\s]/g,''),NAMES=Object.keys(SP).sort((a,b)=>a.localeCompare(b,'fa'));
+function fillSp(q){q=nz(q||'');const a=q?NAMES.filter(n=>nz(n).startsWith(q)).concat(NAMES.filter(n=>!nz(n).startsWith(q)&&nz(n).includes(q))):NAMES;
+ $('#sp').innerHTML='<option value="">— گونه را انتخاب کنید —</option>'+a.map(k=>`<option>${k}</option>`).join('');$('#sp').size=q?Math.min(7,a.length+1):1;return a}
+$('#sps').addEventListener('input',()=>{const a=fillSp($('#sps').value);if(a.length==1&&$('#sps').value.trim()){$('#sp').value=a[0];$('#sp').onchange()}});
+fillSp('');
+$('#sp').onchange=()=>{const v=$('#sp').value;if($('#sps').value){$('#sps').value='';fillSp('');$('#sp').value=v}const x=SP[v];if(x)$('#gd').value=x[1];calc()};
+const ff=()=>(SP[$('#sp').value]||[.5])[0],FOV=52;let tyM=false;
+let noM=false;
+const autoNo=()=>{$('#cw').classList.toggle('hid',$('#ty').value!='h');if(noM)return;if($('#ty').value=='h'){$('#no').value='';$('#no').placeholder='بدون شماره (هیزمی)'}else{$('#no').placeholder='';$('#no').value=toFa(T.filter(t=>t.ty!='h').reduce((a,t)=>Math.max(a,+t.no||0),0)+1)}};
+$('#no').addEventListener('input',()=>{noM=true});
+const autoTy=()=>{if(!tyM)$('#ty').value=(N('#d')>0&&N('#d')<20)?'h':'i';autoNo()};
+function calc(){autoTy();const v=($('#sp').value?volSp($('#sp').value,N('#d'),N('#h')):0)*($('#ty').value=='h'?Math.max(1,Math.round(N('#nn'))||1):1);$('#v').textContent=v>0?fa(v,3):'—'}
+['#d','#h'].forEach(i=>$(i).addEventListener('input',calc));$('#ty').onchange=()=>{tyM=true;autoNo();calc()};$('#nn').addEventListener('input',calc);
+
+/* کالیپر دوربین */
+const COL={tL:'#ffd400',tR:'#ffd400',top:'#ff4d4d',base:'#3ddc84'};
+const DEF={1:[['tL','لبهٔ چپ تنه','v'],['tR','لبهٔ راست تنه','v']],2:[['top','نوک تاج','h'],['base','پای درخت','h']]};
+const GUIDE={1:'گوشی را افقی و موازی تنه، در ارتفاع سینه (۱٫۳ متر) و از فاصلهٔ حدود ۱ متری (بدون زوم) نگه دارید و عکس بگیرید. بعد فاصلهٔ واقعی را بالا بنویسید؛ مثلاً با یک چوب یک‌متری.',2:'گوشی را عمودی و کاملاً صاف نگه دارید و از فاصلهٔ حدود ۵ متری (بدون زوم) عکس بگیرید؛ پای درخت تا نوک تاج در کادر باشد. بعد فاصلهٔ واقعی را بالا بنویسید.'};
+let stp=1,act=null,MK={1:{},2:{}},IMG={1:null,2:null},NEW=false;
+async function exifF(f){const b=new DataView(await f.slice(0,131072).arrayBuffer());if(b.getUint16(0)!==0xFFD8)return null;let o=2;
+ while(o<b.byteLength-10){const m=b.getUint16(o);if(m===0xFFE1&&b.getUint32(o+4)===0x45786966){const t=o+10,le=b.getUint16(t)===0x4949,g16=p=>b.getUint16(p,le),g32=p=>b.getUint32(p,le);let r=0;
+   const sc=p=>{const n=g16(p);for(let i=0;i<n;i++){const e=p+2+i*12,tg=g16(e);if(tg===0x8769)sc(t+g32(e+8));else if(tg===0xA405)r=g16(e+8)}};sc(t+g32(t+4));return r||null}
+  if((m&0xFF00)!==0xFF00)break;o+=2+b.getUint16(o+2)}return null}
+function chips(){const c=$('#chips');c.innerHTML='';DEF[stp].forEach(([k,t])=>{const b=document.createElement('button');b.className=k==act?'':'o';b.textContent=(MK[stp][k]!=null?'✓ ':'')+t;b.onclick=()=>{act=k;chips();render()};c.append(b)})}
+function render(){const o=$('#ov'),m=MK[stp],im=$('#im');o.innerHTML='';
+ DEF[stp].forEach(([k,t,ty])=>{if(m[k]==null)return;const e=document.createElement('div');e.className=ty=='v'?'vl':'hl';e.style[ty=='v'?'left':'top']=m[k]*100+'%';e.style.background=COL[k];if(k==act)e.style.boxShadow='0 0 0 2px #fff';e.innerHTML='<i>'+t+'</i>';o.append(e)});
+ if(stp==1&&im.naturalWidth&&N('#D1')>0){const f=N('#fl')*Math.hypot(im.naturalWidth,im.naturalHeight)/43.267,px=5/(N('#D1')*100/f)/im.naturalWidth*100;if(px>1.5&&px<60){const r=document.createElement('div');r.className='rl';r.style.backgroundImage='repeating-linear-gradient(to right,#fff 0,#fff 1px,transparent 1px,transparent '+px+'%)';r.innerHTML='<i>هر خط = ۵ سانتی‌متر (در فاصلهٔ تنه)</i>';o.append(r)}}}
+function suggest(){const im=$('#im'),w=240,h=Math.round(w*im.naturalHeight/im.naturalWidth),c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d');x.drawImage(im,0,0,w,h);let d;try{d=x.getImageData(0,0,w,h).data}catch(e){return}
+ const g=(i,j)=>{const k=(j*w+i)*4;return .3*d[k]+.59*d[k+1]+.11*d[k+2]};
+ const col=(r0,r1)=>{const a=new Array(w).fill(0);for(let i=2;i<w-2;i++){let q=0;for(let j=Math.floor(h*r0);j<Math.floor(h*r1);j++)q+=Math.abs(g(i+2,j)-g(i-2,j));a[i]=q}return a.map((v,i)=>(a[i-1]||0)+v+(a[i+1]||0))};
+ const pk=(a,x0,x1)=>{let b=-1,mx=-1;for(let i=Math.floor(w*x0);i<Math.floor(w*x1);i++)if(a[i]>mx){mx=a[i];b=i}return b/w};
+ const m=MK[stp];
+ if(stp==1){const a=col(.25,.75);m.tL=pk(a,.03,.5);m.tR=pk(a,.5,.97);act='tL'}
+ else{const a=col(.7,.9),L=pk(a,.1,.5),R=pk(a,.5,.9),cx=(L+R)/2,bw=Math.max(.03,(R-L)/2);let run=0;
+  for(let j=0;j<h*.8;j++){let ns=0,n=0;for(let i=Math.floor((cx-bw)*w);i<=Math.floor((cx+bw)*w);i++){const k=(j*w+i)*4,lum=.3*d[k]+.59*d[k+1]+.11*d[k+2],sky=lum>150&&d[k+2]>=d[k]-5&&d[k+2]>=d[k+1]-15;n++;if(!sky)ns++}
+   run=ns/n>.45?run+1:0;if(run>=3){m.top=(j-2)/h;break}}act='base'}
+ chips()}
+function compute(){const im=$('#im'),m=MK[stp],W=im.naturalWidth,H=im.naturalHeight,R=$('#rd'),S=$('#st');R.textContent='';
+ if(!IMG[stp]||!W){S.textContent='';return}
+ const f=N('#fl')*Math.hypot(W,H)/43.267;
+ if(!DEF[stp].every(x=>m[x[0]]!=null)){S.textContent='نشانگرها را تنظیم کنید: یک نشانگر را از دکمه‌ها انتخاب کنید و روی عکس بزنید.';return}
+ if(stp==1){const D=N('#D1')*100;if(!(D>0)){S.textContent='فاصلهٔ دوربین تا تنه را بنویسید.';return}
+  const sn=Math.sin(Math.abs(Math.atan((m.tR-.5)*W/f)-Math.atan((m.tL-.5)*W/f))/2),d=2*D*sn/(1-sn);
+  if(!(d>0&&isFinite(d))){S.textContent='نشانگرها نامعتبرند.';return}
+  R.textContent='قطر: '+fa(d,1)+' سانتی‌متر';S.textContent='دقت قطر به دقت فاصلهٔ واردشده بستگی دارد.';$('#d').value=toFa(d.toFixed(1));calc()}
+ else{const D=N('#D2')*100;if(!(D>0)){S.textContent='فاصلهٔ دوربین تا پای درخت را بنویسید.';return}
+  const r=Math.max(0,N('#d')/2),th=y=>Math.atan((.5-y)*H/f),h=((D+r)*Math.tan(th(m.top))-D*Math.tan(th(m.base)))/100;
+  if(!(h>0&&isFinite(h))){S.textContent='نشانگرها نامعتبرند.';return}
+  R.textContent='ارتفاع: '+fa(h,1)+' متر';S.textContent='گوشی باید موقع عکس صاف و عمودی باشد؛ کج‌بودن ارتفاع را خطادار می‌کند.';$('#h').value=toFa(h.toFixed(1));calc()}}
+function setStep(n){stp=n;act=null;$('#dw1').classList.toggle('hid',n!=1);$('#dw2').classList.toggle('hid',n!=2);$('#s1').className=n==1?'':'o';$('#s2').className=n==2?'':'o';$('#gd1').textContent=GUIDE[n];const u=IMG[n];$('#pw').classList.toggle('hid',!u);if(u&&$('#im').getAttribute('src')!==u)$('#im').src=u;chips();render();compute()}
+function resetPh(){IMG={1:null,2:null};MK={1:{},2:{}};$('#fi').value='';$('#im').removeAttribute('src');setStep(1)}
+$('#s1').onclick=()=>setStep(1);$('#s2').onclick=()=>setStep(2);
+$('#ph').onclick=()=>$('#fi').click();
+$('#fi').onchange=async e=>{const f=e.target.files[0];if(!f)return;let fx=null;try{fx=await exifF(f)}catch(x){}
+ if(fx)$('#fl').value=toFa(fx);$('#fls').textContent=fx?'فاصلهٔ کانونی از اطلاعات خود عکس خوانده شد.':'فاصلهٔ کانونی از عکس خوانده نشد؛ مقدار پیش‌فرض به‌کار رفته است. اگر عدد دوربین گوشی‌تان را می‌دانید، اصلاح کنید.';
+ IMG[stp]=URL.createObjectURL(f);MK[stp]={};NEW=true;$('#pw').classList.remove('hid');$('#im').src=IMG[stp];e.target.value=''};
+$('#im').onload=()=>{if(NEW){NEW=false;suggest()}render();compute()};
+$('#ov').onclick=e=>{if(!act)return;const r=e.currentTarget.getBoundingClientRect(),L=DEF[stp],i=L.findIndex(x=>x[0]==act);MK[stp][act]=L[i][2]=='v'?(e.clientX-r.left)/r.width:(e.clientY-r.top)/r.height;
+ const nx=L.find((x,j)=>j>i&&MK[stp][x[0]]==null);if(nx)act=nx[0];chips();render();compute()};
+['#fl','#D1','#D2'].forEach(i=>$(i).addEventListener('input',()=>{render();compute()}));
+
+/* مختصات */
+function utm(lat,lon,zf){const a=6378137,f=1/298.257223563,k=.9996,e2=f*(2-f),ep=e2/(1-e2),z=zf||Math.floor((lon+180)/6)+1,l0=rad((z-1)*6-177),p=rad(lat),A=Math.cos(p)*(rad(lon)-l0),n=a/Math.sqrt(1-e2*Math.sin(p)**2),t=Math.tan(p)**2,c=ep*Math.cos(p)**2;
+ const M=a*((1-e2/4-3*e2*e2/64-5*e2**3/256)*p-(3*e2/8+3*e2*e2/32+45*e2**3/1024)*Math.sin(2*p)+(15*e2*e2/256+45*e2**3/1024)*Math.sin(4*p)-(35*e2**3/3072)*Math.sin(6*p));
+ return{z,E:Math.round(k*n*(A+(1-t+c)*A**3/6+(5-18*t+t*t+72*c-58*ep)*A**5/120)+5e5),N:Math.round(k*(M+n*Math.tan(p)*(A*A/2+(5-t+9*c+4*c*c)*A**4/24+(61-58*t+t*t+600*c-330*ep)*A**6/720)))}}
+let cur=null,pos=null,wid=null;
+function gShow(){const c=cur,a=c.acc,k=a<=5?1:a<=10?2:3,b=$('#gb');b.classList.remove('hid','g1','g2','g3');b.classList.add('g'+k);
+ $('#gX').textContent=toFa(c.u.E);$('#gY').textContent=toFa(c.u.N);$('#gZ').textContent=toFa(c.u.z)+' شمالی';
+ $('#gA').textContent='دقت: ± '+fa(a,0)+' متر — '+['','عالی','متوسط','ضعیف؛ کمی صبر کنید یا به فضای بازتر بروید'][k];
+ if($('#gs').textContent.startsWith('در حال'))$('#gs').textContent='مختصات فعال است؛ برای ثبت، «ثبت مختصات» را بزنید.'}
+$('#ga').onclick=()=>{aud();
+ if(!navigator.geolocation){$('#gs').textContent='این مرورگر مختصات را پشتیبانی نمی‌کند.';return}
+ if(wid!==null)return;$('#gs').textContent='در حال یافتن موقعیت…';
+ wid=navigator.geolocation.watchPosition(p=>{cur={lat:+p.coords.latitude.toFixed(6),lng:+p.coords.longitude.toFixed(6),acc:p.coords.accuracy};cur.u=utm(cur.lat,cur.lng);gShow();mapCheck()},()=>{wid=null;$('#gs').textContent='دسترسی به مختصات داده نشد؛ مجوز موقعیت را در مرورگر فعال کنید.'},{enableHighAccuracy:true,maximumAge:2000})};
+$('#gr').onclick=()=>{if(!cur){$('#gs').textContent='ابتدا «فعال‌سازی مختصات» را بزنید و کمی صبر کنید.';return}pos=cur;$('#gs').textContent='ثبت شد — X: '+toFa(pos.u.E)+' ، Y: '+toFa(pos.u.N)+' (زون '+toFa(pos.u.z)+' شمالی) — دقت ± '+fa(pos.acc,0)+' متر'+(pos.acc>10?' ⚠ دقت ضعیف':'')};
+
+$('#mc').onclick=()=>{$('#cm').classList.remove('hid');$('#mc').className='';$('#mm').className='o'};
+$('#mm').onclick=()=>{$('#cm').classList.add('hid');$('#mm').className='';$('#mc').className='o';$('#d').focus()};
+/* ذخیره */
+/* نقشهٔ محدوده */
+let MAPP=[],MAPZ=39,ac=null,lastA=0;
+function aud(){try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();ac.resume()}catch(e){}}
+function alarm(force){if(!$('#mal').checked)return;const n=Date.now();if(!force&&n-lastA<4000)return;lastA=n;try{navigator.vibrate&&navigator.vibrate([400,150,400])}catch(e){}
+ try{if(ac){const o=ac.createOscillator(),g=ac.createGain();o.frequency.value=880;o.connect(g);g.connect(ac.destination);g.gain.setValueAtTime(.3,ac.currentTime);o.start();o.stop(ac.currentTime+.5)}}catch(e){}}
+function parseKML(t){const d=new DOMParser().parseFromString(t,'text/xml'),out=[];
+ const ring=e=>{const c=e&&e.querySelector('coordinates');return c?c.textContent.trim().split(/\s+/).map(v=>v.split(',').map(Number)).filter(a=>a.length>=2&&isFinite(a[0])&&isFinite(a[1])):[]};
+ const nm=e=>{const p=e.closest('Placemark'),n=p&&p.querySelector('name');return(n&&n.textContent.trim())||'بدون‌نام'};
+ d.querySelectorAll('Polygon').forEach(g=>{const o=ring(g.querySelector('outerBoundaryIs')),i=[...g.querySelectorAll('innerBoundaryIs')].map(ring).filter(r=>r.length>=3);if(o.length>=3)out.push({n:nm(g),o,i,ll:true})});
+ d.querySelectorAll('LineString,LinearRing').forEach(g=>{if(g.closest('Polygon'))return;const o=ring(g);if(o.length>=4&&Math.hypot(o[0][0]-o[o.length-1][0],o[0][1]-o[o.length-1][1])<1e-6)out.push({n:nm(g),o,i:[],ll:true})});return out}
+function parseDXF(t){const L=t.split(/\r?\n/),P=[],out=[];for(let i=0;i+1<L.length;i+=2)P.push([+L[i].trim(),L[i+1].trim()]);
+ const add=(n,pts,cl)=>{pts=pts.filter(q=>isFinite(q[0])&&isFinite(q[1]));if(pts.length<3)return;const f=pts[0],l=pts[pts.length-1];
+  if(!cl&&Math.hypot(f[0]-l[0],f[1]-l[1])>(Math.abs(f[0])<=180?1e-6:.5))return;out.push({n,o:pts,i:[],ll:pts.every(q=>Math.abs(q[0])<=180&&Math.abs(q[1])<=90)})};
+ for(let k=0;k<P.length;k++){if(P[k][0]!==0)continue;
+  if(P[k][1]==='LWPOLYLINE'){let ly='0',cl=false,pts=[],j=k+1;for(;j<P.length&&P[j][0]!==0;j++){const a=P[j][0],b=P[j][1];if(a===8)ly=b;else if(a===70)cl=(+b&1)==1;else if(a===10)pts.push([+b,NaN]);else if(a===20&&pts.length)pts[pts.length-1][1]=+b}add(ly,pts,cl);k=j-1}
+  else if(P[k][1]==='POLYLINE'){let ly='0',cl=false,pts=[],j=k+1;for(;j<P.length&&P[j][0]!==0;j++){if(P[j][0]===8)ly=P[j][1];else if(P[j][0]===70)cl=(+P[j][1]&1)==1}
+   for(;j<P.length&&!(P[j][0]===0&&P[j][1]==='SEQEND');j++){if(P[j][0]===0&&P[j][1]==='VERTEX'){let x=NaN,y=NaN;for(let q=j+1;q<P.length&&P[q][0]!==0;q++){if(P[q][0]===10)x=+P[q][1];else if(P[q][0]===20)y=+P[q][1]}pts.push([x,y])}}add(ly,pts,cl);k=j}}
+ return out}
+function pir(r,x,y){let c=false;for(let i=0,j=r.length-1;i<r.length;j=i++){const a=r[i],b=r[j];if((a[1]>y)!=(b[1]>y)&&x<(b[0]-a[0])*(y-a[1])/(b[1]-a[1])+a[0])c=!c}return c}
+function sdist(r,x,y){let m=1e18;for(let i=0,j=r.length-1;i<r.length;j=i++){const a=r[j],b=r[i],dx=b[0]-a[0],dy=b[1]-a[1],l=dx*dx+dy*dy;let t=l?((x-a[0])*dx+(y-a[1])*dy)/l:0;t=Math.max(0,Math.min(1,t));m=Math.min(m,Math.hypot(x-a[0]-t*dx,y-a[1]-t*dy))}return m}
+function mtest(sel,x,y){let inn=false,d=1e18;sel.forEach(p=>{if(pir(p.o,x,y)&&!p.i.some(h=>pir(h,x,y)))inn=true;[p.o,...p.i].forEach(r=>{d=Math.min(d,sdist(r,x,y))})});return{in:inn,d}}
+const msel=()=>MAPP;
+function ll(E,N,z){const a=6378137,f=1/298.257223563,k=.9996,e2=f*(2-f),ep=e2/(1-e2),e1=(1-Math.sqrt(1-e2))/(1+Math.sqrt(1-e2)),x=E-5e5,mu=(N/k)/(a*(1-e2/4-3*e2*e2/64-5*e2**3/256));
+ const p1=mu+(3*e1/2-27*e1**3/32)*Math.sin(2*mu)+(21*e1*e1/16-55*e1**4/32)*Math.sin(4*mu)+(151*e1**3/96)*Math.sin(6*mu)+(1097*e1**4/512)*Math.sin(8*mu);
+ const s=Math.sin(p1),c=Math.cos(p1),t=Math.tan(p1)**2,C=ep*c*c,n=a/Math.sqrt(1-e2*s*s),r=a*(1-e2)/Math.pow(1-e2*s*s,1.5),D=x/(n*k);
+ const lat=p1-(n*Math.tan(p1)/r)*(D*D/2-(5+3*t+10*C-4*C*C-9*ep)*D**4/24+(61+90*t+298*C+45*t*t-252*ep-3*C*C)*D**6/720);
+ const lon=((z-1)*6-177)*Math.PI/180+(D-(1+2*t+C)*D**3/6+(5-2*C+28*t-3*C*C+8*ep+24*t*t)*D**5/120)/c;return[lat*180/Math.PI,lon*180/Math.PI]}
+const esc=x=>String(x==null?'':x).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+function kmlStr(){const co=r=>r.concat([r[0]]).map(q=>{const[la,lo]=ll(q[0],q[1],MAPZ);return lo.toFixed(7)+','+la.toFixed(7)+',0'}).join(' ');
+ let k='<?xml version="1.0" encoding="UTF-8"?><kml xmlns="http://www.opengis.net/kml/2.2"><Document><name>نقشه و درختان</name>'+
+ '<Style id="b"><LineStyle><color>ff00cc00</color><width>3</width></LineStyle><PolyStyle><color>3300ff00</color></PolyStyle></Style>'+
+ '<Style id="i"><IconStyle><scale>0.9</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/red-circle.png</href></Icon></IconStyle></Style>'+
+ '<Style id="h"><IconStyle><scale>0.9</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/ylw-circle.png</href></Icon></IconStyle></Style>';
+ if(MAPP.length){k+='<Folder><name>محدودهٔ نقشه</name>'+MAPP.map(p=>'<Placemark><name>'+esc(p.n)+'</name><styleUrl>#b</styleUrl><Polygon><outerBoundaryIs><LinearRing><coordinates>'+co(p.o)+'</coordinates></LinearRing></outerBoundaryIs>'+p.i.map(r=>'<innerBoundaryIs><LinearRing><coordinates>'+co(r)+'</coordinates></LinearRing></innerBoundaryIs>').join('')+'</Polygon></Placemark>').join('')+'</Folder>'}
+ [['i','درختان صنعتی'],['h','درختان هیزمی']].forEach(([ty,nm])=>{const ts=T.filter(t=>(t.ty=='h'?'h':'i')==ty&&t.lat);if(!ts.length)return;
+  k+='<Folder><name>'+nm+'</name>'+ts.map(t=>'<Placemark><name>'+esc(t.ty=='h'?t.sp:(t.no||t.sp))+'</name><description>'+esc(t.sp+' | '+G[t.g]+' | قطر '+t.d+' سانتی‌متر | ارتفاع '+t.h+' متر | حجم '+R3(tv(t))+' مترمکعب'+(t.ty=='h'?' | تعداد '+cnt(t):'')+(t.ds?' | '+t.ds:''))+'</description><styleUrl>#'+ty+'</styleUrl><Point><coordinates>'+t.lng+','+t.lat+',0</coordinates></Point></Placemark>').join('')+'</Folder>'});
+ return k+'</Document></kml>'}
+function crc32(u){let t=crc32.t;if(!t){t=crc32.t=[];for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}}let r=-1;for(let i=0;i<u.length;i++)r=t[(r^u[i])&255]^(r>>>8);return(r^-1)>>>0}
+function zip1(name,d){const nb=new TextEncoder().encode(name),n=nb.length,sz=d.length,crc=crc32(d);
+ const lh=new DataView(new ArrayBuffer(30)),cd=new DataView(new ArrayBuffer(46)),eo=new DataView(new ArrayBuffer(22)),L=true;
+ lh.setUint32(0,0x04034b50,L);lh.setUint16(4,20,L);lh.setUint16(6,0x0800,L);lh.setUint16(12,0x21,L);lh.setUint32(14,crc,L);lh.setUint32(18,sz,L);lh.setUint32(22,sz,L);lh.setUint16(26,n,L);
+ cd.setUint32(0,0x02014b50,L);cd.setUint16(4,20,L);cd.setUint16(6,20,L);cd.setUint16(8,0x0800,L);cd.setUint16(14,0x21,L);cd.setUint32(16,crc,L);cd.setUint32(20,sz,L);cd.setUint32(24,sz,L);cd.setUint16(28,n,L);
+ eo.setUint32(0,0x06054b50,L);eo.setUint16(8,1,L);eo.setUint16(10,1,L);eo.setUint32(12,46+n,L);eo.setUint32(16,30+n+sz,L);
+ return new Blob([lh,nb,d,cd,nb,eo],{type:'application/zip'})}
+$('#gk').onclick=async()=>{const m=$('#gen');m.textContent='در حال ساخت فایل…';
+ try{if(!MAPP.length&&!T.some(t=>t.lat)){m.textContent='نه نقشه‌ای بارگذاری شده و نه درختی با مختصات ثبت شده است.';return}
+  if(!DL){m.textContent='ذخیرهٔ فایل در این نمایش ممکن نیست (قابلیت دانلود فعال نیست).';return}
+  const b=zip1('doc.kml',new TextEncoder().encode(kmlStr()));m.textContent='پنجرهٔ تأیید ذخیره را بپذیرید…';
+  await DL.save({filename:'trees-map.zip',data:b});m.textContent='فایل ذخیره شد. پسوند آن را از zip به kmz عوض کنید و با گوگل ارث یا گوگل‌مپ باز کنید.'}
+ catch(e){m.textContent=(e&&e.code=='declined')?'ذخیره لغو شد.':'ساخت یا ذخیرهٔ فایل انجام نشد: '+String(e&&(e.message||e.code)||e)}};
+function insideLL(lat,lng){const u=utm(lat,lng,MAPZ);return mtest(msel(),u.E,u.N).in}
+function mdraw(sel,u){const c=$('#mc2'),x=c.getContext('2d'),W=c.width,H=c.height;x.clearRect(0,0,W,H);
+ let x0=1e18,x1=-1e18,y0=1e18,y1=-1e18;const ext=(a,b)=>{x0=Math.min(x0,a);x1=Math.max(x1,a);y0=Math.min(y0,b);y1=Math.max(y1,b)};
+ sel.forEach(p=>p.o.forEach(q=>ext(q[0],q[1])));if(u)ext(u.E,u.N);
+ const pad=20,sc=Math.min((W-2*pad)/((x1-x0)||1),(H-2*pad)/((y1-y0)||1)),ox=(W-(x1-x0)*sc)/2,oy=(H-(y1-y0)*sc)/2,X=e=>ox+(e-x0)*sc,Y=n=>H-(oy+(n-y0)*sc);
+ x.lineWidth=2;sel.forEach(p=>{x.beginPath();[p.o,...p.i].forEach(r=>{r.forEach((q,k)=>k?x.lineTo(X(q[0]),Y(q[1])):x.moveTo(X(q[0]),Y(q[1])));x.closePath()});x.fillStyle='rgba(60,160,90,.25)';x.strokeStyle='#2e9d4f';x.fill('evenodd');x.stroke()});
+ if(u){x.beginPath();x.arc(X(u.E),Y(u.N),9,0,7);x.fillStyle=u.in?'#2e9d4f':'#d33';x.fill();x.strokeStyle='#fff';x.lineWidth=3;x.stroke()}}
+function mapCheck(){const box=$('#ms'),cv=$('#mc2');
+ if(!MAPP.length){box.classList.add('hid');cv.classList.add('hid');return}
+ const sel=msel();cv.classList.remove('hid');box.classList.remove('hid');
+ if(!cur){mdraw(sel,null);box.className='gbox';$('#mst').textContent='نقشه بارگذاری شد';$('#msd').textContent='برای تشخیص موقعیت، «فعال‌سازی مختصات» را بزنید.';return}
+ const u=utm(cur.lat,cur.lng,MAPZ),r=mtest(sel,u.E,u.N);u.in=r.in;mdraw(sel,u);
+ box.className='gbox '+(r.in?'g1':'g3 al');
+ $('#mst').textContent=r.in?'✅ داخل محدودهٔ نقشه':'⛔ خارج از محدودهٔ نقشه';
+ $('#msd').textContent=(r.in?'فاصله تا نزدیک‌ترین مرز: ':'فاصله تا محدوده: ')+toFa(Math.round(r.d))+' متر'+(r.d<cur.acc?' — نزدیک مرز؛ دقت GPS (± '+toFa(Math.round(cur.acc))+' متر) ممکن است نتیجه را مبهم کند':'');
+ if(!r.in)alarm()}
+function setMap(p,z,nm,save){MAPP=p;MAPZ=z;
+ $('#mi').textContent='نقشه: '+nm+' — '+toFa(p.length)+' پلیگون، زون '+toFa(z)+' شمالی';$('#mx').classList.remove('hid');
+ if(save)try{localStorage.setItem('map',JSON.stringify({p,z,nm}))}catch(e){$('#mi').textContent+=' (ذخیرهٔ دائمی نقشه ممکن نشد؛ با بستن صفحه باید دوباره بفرستید)'}
+ mapCheck()}
+$('#mb').onclick=()=>{aud();$('#mf').click()};
+$('#mx').onclick=()=>{MAPP=[];try{localStorage.removeItem('map')}catch(e){}$('#mx').classList.add('hid');$('#mi').textContent='نقشه‌ای بارگذاری نشده است.';mapCheck()};
+$('#mf').onchange=async e=>{const f=e.target.files[0];if(!f)return;const ext=f.name.split('.').pop().toLowerCase(),S=m=>{$('#mi').textContent=m};
+ try{let po=[];
+  if(ext=='dwg'){S('فایل DWG مستقیم خوانده نمی‌شود؛ در اتوکد با Save As به DXF ذخیره کنید یا آن را به KMZ تبدیل کنید.');return}
+  if(ext=='kmz'){if(!window.JSZip){S('کتابخانهٔ KMZ بارگذاری نشد؛ فایل را به KML تبدیل کنید.');return}
+   const zip=await JSZip.loadAsync(await f.arrayBuffer()),k=Object.keys(zip.files).filter(n=>/\.kml$/i.test(n)).sort((a,b)=>/doc\.kml$/i.test(b)-/doc\.kml$/i.test(a))[0];if(!k)throw 0;po=parseKML(await zip.files[k].async('string'))}
+  else if(ext=='kml')po=parseKML(await f.text());
+  else if(ext=='dxf')po=parseDXF(await f.text());
+  else{S('فرمت پشتیبانی‌نشده است؛ KMZ، KML یا DXF بفرستید.');return}
+  if(!po.length){S('هیچ پلیگون بسته‌ای در فایل پیدا نشد؛ مرز محدوده باید پلیگون یا پلی‌لاین بسته باشد.');return}
+  const f0=po[0].o[0],zn=po[0].ll&&ext!='dxf'?Math.floor((f0[0]+180)/6)+1:(po[0].ll?Math.floor((f0[0]+180)/6)+1:(cur?cur.u.z:39));
+  const cv=(r,ll)=>r.map(q=>{if(ll){const u=utm(q[1],q[0],zn);return[u.E,u.N]}return[Math.round(q[0]*10)/10,Math.round(q[1]*10)/10]});
+  setMap(po.map(q=>({n:q.n,o:cv(q.o,q.ll),i:q.i.map(r=>cv(r,q.ll))})),zn,f.name,true)}
+ catch(x){S('خواندن فایل ممکن نشد.')}
+ e.target.value=''};
+
+let edId=null;
+function endEdit(){edId=null;$('#sv').textContent='ذخیرهٔ درخت';$('#ce').classList.add('hid')}
+function clr(){tyM=false;noM=false;$('#nn').value='۱';$('#ds').value='';$('#d').value='';$('#h').value='';$('#sps').value='';fillSp('');$('#sp').value='';resetPh();calc()}
+$('#sv').onclick=()=>{const d=N('#d'),h=N('#h'),f=ff(),sp=$('#sp').value;
+ if(!sp){$('#msg').textContent='ابتدا گونه را انتخاب کنید؛ بدون گونه ذخیره نمی‌شود.';return}
+ if(!(d>0&&h>0)){$('#msg').textContent='قطر و ارتفاع را وارد کنید.';return}
+ const hz=$('#ty').value=='h',o={no:hz?'':toEn($('#no').value),sp,g:+$('#gd').value,ty:$('#ty').value,n:hz?Math.max(1,Math.round(N('#nn'))||1):1,d,h,f,v:volSp(sp,d,h),ds:$('#ds').value};
+ if(edId!==null){const t=T.find(x=>x.id==edId);if(t){Object.assign(t,o);if(t.d2)t.v2=volSp(sp,t.d2,t.h2);if(pos){t.lat=pos.lat;t.lng=pos.lng;t.ux=pos.u.E;t.uy=pos.u.N;t.uz=pos.u.z;t.ua=Math.round(pos.acc)}}
+  store();endEdit();pos=null;clr();$('#msg').textContent='ویرایش ذخیره شد.';return}
+ T.push(Object.assign({id:T.reduce((a,t)=>Math.max(a,t.id),0)+1,lat:pos?pos.lat:null,lng:pos?pos.lng:null,ux:pos?pos.u.E:null,uy:pos?pos.u.N:null,uz:pos?pos.u.z:null,ua:pos?Math.round(pos.acc):null,dt:new Date().toISOString().slice(0,10)},o));
+ const out=pos&&MAPP.length&&!insideLL(pos.lat,pos.lng);store();$('#msg').textContent=(pos?'ذخیره شد (با مختصات).':'ذخیره شد (بدون مختصات).')+(out?' ⚠ این درخت خارج از محدودهٔ نقشه ثبت شد!':'');if(out)alarm(true);pos=null;clr();
+ if($('#gs').textContent.startsWith('ثبت شد'))$('#gs').textContent='برای درخت بعدی دوباره «ثبت مختصات» را بزنید.'};
+$('#ce').onclick=()=>{endEdit();pos=null;clr();$('#msg').textContent='ویرایش لغو شد.'};
+window.ed=id=>{const t=T.find(x=>x.id==id);if(!t)return;edId=id;$('#sps').value='';fillSp('');$('#sp').value=t.sp;$('#gd').value=t.g;$('#d').value=toFa(t.d);$('#h').value=toFa(t.h);tyM=true;$('#ty').value=t.ty;$('#nn').value=toFa(t.n||1);noM=true;$('#no').value=t.ty=='h'?'':toFa(t.no||'');$('#ds').value=t.ds||'';
+ $('#sv').textContent='ذخیرهٔ ویرایش';$('#ce').classList.remove('hid');$('#msg').textContent='در حال ویرایش یک درخت؛ برای تغییر مختصات دوباره «ثبت مختصات» را بزنید.';
+ document.querySelector('nav button[data-t=m]').click();calc();scrollTo(0,0)};
+
+const cnt=t=>t.n||1,tv=t=>t.v*cnt(t),sv=a=>a.reduce((x,t)=>x+tv(t),0),ct=a=>a.reduce((x,t)=>x+cnt(t),0);
+function sumRows(){const o=[];
+ [['i','درختان صنعتی'],['h','درختان هیزمی']].forEach(([k,n])=>{const ts=T.filter(t=>t.ty==k);o.push([n,'','','','',1]);
+  [1,2,3].forEach(g=>{const gs=ts.filter(t=>t.g==g);[...new Set(gs.map(t=>t.sp))].forEach(sp=>{const u=gs.filter(t=>t.sp==sp);o.push(['',G[g],sp,ct(u),sv(u)])})});
+  o.push(['جمع '+n,'','',ct(ts),sv(ts),1])});
+ o.push(['مجموع کل','','',ct(T),sv(T),1]);return o}
+function draw(){bnr();
+ $('#tb').innerHTML='<tr><th>شماره</th><th>گونه</th><th>دسته</th><th>نوع</th><th>قطر</th><th>ارتفاع</th><th>حجم</th><th>X</th><th>Y</th><th>زون</th><th>توضیحات</th><th></th></tr>'+T.map(t=>`<tr><td>${t.ty=='h'?'—':toFa(t.no||'')}</td><td>${t.sp}</td><td>${G[t.g]}</td><td>${t.ty=='h'?'هیزمی ('+toFa(cnt(t))+')':'صنعتی'}</td><td>${fa(t.d,1)}</td><td>${fa(t.h,1)}</td><td>${fa(tv(t),3)}</td><td>${t.ux?toFa(t.ux):'—'}</td><td>${t.uy?toFa(t.uy):'—'}</td><td>${t.uz?toFa(t.uz):'—'}</td><td>${t.ds||''}</td><td><button class="o" style="padding:2px 8px" onclick="ed(${t.id})">ویرایش</button> <button class="x" onclick="del(${t.id})">حذف</button></td></tr>`).join('');
+ $('#tot').textContent=fa(sv(T),3);
+ {const x=sumX();$('#sm').innerHTML='<tr><th rowspan="2">ردیف</th><th rowspan="2">دسته‌بندی</th><th colspan="2">صنعتی</th><th colspan="2">هیزمی</th></tr><tr><th>تعداد</th><th>حجم</th><th>تعداد</th><th>حجم</th></tr>'+x.r.map((a,i)=>`<tr><td>${fa(i+1)}</td><td>${a[0]}</td><td>${fa(a[1])}</td><td>${fa(a[2],2)}</td><td>${fa(a[3])}</td><td>${fa(a[4],2)}</td></tr>`).join('')+`<tr style="font-weight:700"><td colspan="2">مجموع</td><td>${fa(x.t[1])}</td><td>${fa(x.t[2],2)}</td><td>${fa(x.t[3])}</td><td>${fa(x.t[4],2)}</td></tr>`}
+ const cu=$('#hs2').value;$('#hs2').innerHTML=T.map(t=>`<option value="${t.id}">${t.ty=='h'?'هیزمی':'شماره '+toFa(t.no||t.id)} - ${t.sp} - ${fa(t.d,0)}</option>`).join('');if(cu)$('#hs2').value=cu;
+ $('#tb2').innerHTML='<tr><th>#</th><th>گونه</th><th>حجم اولیه</th><th>حجم تجدید</th><th>تغییر٪</th><th>استحصال</th><th>تاریخ</th></tr>'+T.filter(t=>t.v2||t.hv).map(t=>`<tr><td>${t.ty=='h'?'هیزمی':toFa(t.no||t.id)}</td><td>${t.sp}</td><td>${fa(t.v,3)}</td><td>${fa(t.v2,3)}</td><td>${t.v2?fa((t.v2-t.v)/t.v*100,1):'—'}</td><td>${fa(t.hv,3)}</td><td>${t.hd||'—'}</td></tr>`).join('')}
+window.del=id=>{T=T.filter(t=>t.id!==id);store();draw()};
+$('#sh').onclick=()=>{const t=T.find(x=>x.id==$('#hs2').value);if(!t)return;
+ const d2=N('#d2'),h2=N('#h2');if(d2>0&&h2>0){t.d2=d2;t.h2=h2;t.v2=volSp(t.sp,d2,h2)}
+ if(N('#hv')>0){t.hv=N('#hv');t.hd=$('#hd').value;t.hn=$('#hn').value}store();draw()};
+
+const DL={save:async({filename,data})=>{const u=URL.createObjectURL(data),a=document.createElement('a');a.href=u;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),60000)}};
+const R3=x=>+(+x).toFixed(3),say=(m,bad)=>document.querySelectorAll('.xs').forEach(e=>{e.textContent=m;e.style.color=bad?'#d33':''});
+async function mkX(sheets){
+ const wb=new ExcelJS.Workbook(),bd={style:'thin'};
+ sheets.forEach(([n,rows,mg,hr=1,tot])=>{
+  const ws=wb.addWorksheet(n,{views:[{rightToLeft:true}]}),W=rows[0].length;
+  rows.forEach(r=>ws.addRow(r));
+  for(let i=1;i<=W;i++)ws.getColumn(i).width=n=='درختان'?14:18;
+  for(let r=1;r<=rows.length;r++)for(let c=1;c<=W;c++){const x=ws.getCell(r,c);x.alignment={horizontal:'center',vertical:'middle',wrapText:true};x.border={top:bd,left:bd,bottom:bd,right:bd};
+   if(r<=hr){x.font={bold:true};x.fill={type:'pattern',pattern:'solid',fgColor:{argb:'FFE3EEDF'}}}else if(tot&&r==rows.length)x.font={bold:true}}
+  (mg||[]).forEach(([a,b,c,d])=>ws.mergeCells(a+1,b+1,c+1,d+1))});
+ return await wb.xlsx.writeBuffer()}
+const MIME='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',msg=e=>String(e&&e.message||e);
+const safe=f=>()=>{try{const r=f();if(r&&r.catch)r.catch(e=>say('خطا: '+msg(e),1))}catch(e){say('خطا: '+msg(e),1)}};
+async function exp(fn,sheets){
+ if(!DL){say('ذخیرهٔ فایل در این نمایش ممکن نیست (قابلیت دانلود فعال نیست).',1);return}
+ let blob=null,why='';
+ if(window.ExcelJS){try{blob=new Blob([await mkX(sheets)],{type:MIME})}catch(e){why='قالب‌بندی: '+msg(e)}}
+ if(!blob&&window.XLSX){try{const wb=XLSX.utils.book_new();wb.Workbook={Views:[{RTL:true}]};
+   sheets.forEach(([n,rows,mg])=>{const ws=XLSX.utils.aoa_to_sheet(rows);ws['!cols']=rows[0].map(()=>({wch:16}));if(mg)ws['!merges']=mg.map(([a,b,c,d])=>({s:{r:a,c:b},e:{r:c,c:d}}));XLSX.utils.book_append_sheet(wb,ws,n)});
+   blob=new Blob([XLSX.write(wb,{bookType:'xlsx',type:'array'})],{type:MIME})}catch(e){why+=' | '+msg(e)}}
+ if(blob)fn+='.xlsx';else{blob=new Blob(['\ufeff'+sheets[0][1].map(r=>r.map(c=>'"'+String(c??'').replace(/"/g,'""')+'"').join(',')).join('\r\n')],{type:'text/csv'});fn+='.csv'}
+ try{await DL.save({filename:fn,data:blob});say(why?'ذخیره شد، ولی با قالب ساده ('+why+')':'فایل ذخیره شد.',!!why)}catch(e){say('ذخیره انجام نشد: '+msg(e),1)}}
+function sumX(){const I=T.filter(t=>t.ty!='h'),H=T.filter(t=>t.ty=='h'),sp=[...new Set(T.map(t=>t.sp))].sort((a,b)=>((SP[a]||[0,3])[1]-(SP[b]||[0,3])[1])||a.localeCompare(b,'fa'));
+ return{r:sp.map(n=>{const i=I.filter(t=>t.sp==n),h=H.filter(t=>t.sp==n);return[n,ct(i),sv(i),ct(h),sv(h)]}),t:['مجموع',ct(I),sv(I),ct(H),sv(H)]}}
+function sumSheets(){const x=sumX(),n3=a=>a.slice(0,1).concat(a.slice(1).map((v,i)=>i%2?R3(v):v));
+ const A=[['خلاصه وضعیت درختان مورد نشانه‌گذاری شده','','','','',''],['ردیف','دسته‌بندی درختان نشانه‌گذاری شده','درختان صنعتی','','درختان هیزمی',''],['','','تعداد','حجم','تعداد','حجم']].concat(x.r.map((a,i)=>[i+1].concat(n3(a))),[['مجموع',''].concat(n3(x.t).slice(1))]),L=A.length-1;
+ const gs=[1,2,3].map(g=>{const I=T.filter(t=>t.g==g&&t.ty!='h'),H=T.filter(t=>t.g==g&&t.ty=='h');return[G[g],ct(I),R3(sv(I)),ct(H),R3(sv(H))]});
+ const B=[['خلاصه بر اساس دسته','','','',''],['دسته','درختان صنعتی','','درختان هیزمی',''],['','تعداد','حجم','تعداد','حجم']].concat(gs);
+ return[['خلاصه',A,[[0,0,0,5],[1,0,2,0],[1,1,2,1],[1,2,1,3],[1,4,1,5],[L,0,L,1]],3,1],['خلاصه دسته',B,[[0,0,0,4],[1,0,2,0],[1,1,1,2],[1,3,1,4]],3]]}
+$('#e1').onclick=safe(()=>{
+ const ind=T.filter(t=>t.ty!='h').sort((a,b)=>(+a.no||a.id)-(+b.no||b.id)),fw=T.filter(t=>t.ty=='h'),gm={};
+ fw.forEach(t=>{const d=Math.round(t.d),h=Math.round(t.h),k=t.sp+'|'+d+'|'+h;gm[k]=gm[k]||{sp:t.sp,d,h,n:0,v:0};gm[k].n+=cnt(t);gm[k].v+=tv(t)});
+ const gr=Object.values(gm),W=12,pad=a=>a.concat(Array(W-a.length).fill(''));
+ const rows=[pad(['سیاهه درختان']),pad(['درختان صنعتی','','','','','','درختان هیزمی']),pad(['شماره درخت','جنس','ابعاد','','حجم (مترمکعب)','توضیحات','جنس','ابعاد','','حجم یک اصله','تعداد','حجم']),pad(['','','قطر (cm)','طول (m)','','','','قطر (cm)','طول (m)'])];
+ for(let i=0;i<Math.max(ind.length,gr.length);i++){const a=ind[i],g=gr[i];rows.push(pad((a?[a.no||i+1,a.sp,a.d,a.h,R3(a.v),a.ds||'']:Array(6).fill('')).concat(g?[g.sp,g.d,g.h,R3(g.v/g.n),g.n,R3(g.v)]:[])))}
+ rows.push(pad(['جمع','','','',R3(sv(ind)),'','','','','',ct(fw),R3(sv(fw))]));
+ const L=rows.length-1,mg=[[0,0,0,11],[1,0,1,5],[1,6,1,11],[2,0,3,0],[2,1,3,1],[2,2,2,3],[2,4,3,4],[2,5,3,5],[2,6,3,6],[2,7,2,8],[2,9,3,9],[2,10,3,10],[2,11,3,11],[L,0,L,3]];
+ exp('trees',[['درختان',rows,mg,4,1],['مختصات',[['شماره','گونه','X (UTM)','Y (UTM)','زون','دقت (± متر)']].concat(ind.map((t,i)=>[t.no||i+1,t.sp,t.ux||'',t.uy||'',t.uz||'',t.ua||'']))],...sumSheets()])});
+$('#e2').onclick=safe(()=>exp('harvest',[['تجدید و استحصال',[['شماره','گونه','دسته','حجم اولیه (مترمکعب)','قطر جدید','ارتفاع جدید','حجم تجدید (مترمکعب)','تغییر %','حجم استحصال (مترمکعب)','تاریخ استحصال','یادداشت']].concat(T.filter(t=>t.v2||t.hv).map(t=>[t.ty=='h'?'هیزمی':(t.no||''),t.sp,G[t.g],R3(t.v),t.d2||'',t.h2||'',t.v2?R3(t.v2):'',t.v2?+((t.v2-t.v)/t.v*100).toFixed(1):'',t.hv||'',t.hd||'',t.hn||'']))]]));
+$('#bk').onclick=async()=>{if(!DL){say('ذخیرهٔ فایل در این نمایش ممکن نیست.');return}
+ try{const dt=new Date().toISOString().slice(0,10);await DL.save({filename:'backup-'+dt+'.json',data:new Blob([JSON.stringify({app:'hyrcanian',v:1,trees:T})],{type:'application/json'})});BK={n:T.length,dt};try{localStorage.setItem('bk',JSON.stringify(BK))}catch(e){}bnr();say('پشتیبان ذخیره شد.')}catch(e){say('پشتیبان‌گیری انجام نشد.')}};
+$('#rb').onclick=()=>$('#rf').click();
+$('#rf').onchange=async e=>{const f=e.target.files[0];if(!f)return;
+ try{const j=JSON.parse(await f.text()),a=Array.isArray(j)?j:j.trees;if(!Array.isArray(a)||a.some(t=>!t||typeof t.d!=='number'||!t.sp))throw 0;
+  if($('#rm').value=='r')T=a;else{let m=T.reduce((x,t)=>Math.max(x,t.id),0);T=T.concat(a.map(t=>Object.assign({},t,{id:++m})))}
+  norm();store();draw();say('بازیابی انجام شد: '+toFa(a.length)+' درخت.')}catch(x){say('فایل پشتیبان معتبر نیست.')}
+ e.target.value=''};
+try{const m=JSON.parse(localStorage.getItem('map')||'null');if(m&&m.p&&m.p.length)setMap(m.p,m.z,m.nm,false)}catch(e){}
+setStep(1);$('#sp').onchange();draw();
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+</script>
+</body>
+</html>
